@@ -1,6 +1,9 @@
+<%@page import="com.smhrd.domain.Member"%>
 <%@page import="com.example.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +30,15 @@
 			<!-- Logo -->
 			<div id="logo">
 				<span class="image avatar48"><img src="images/avatar.jpg"
+					
 					alt="" /></span>
+					
 				<%
-  				MemberDTO dto = (MemberDTO)session.getAttribute("dto");
+  				Member dto = (Member)session.getAttribute("loginMember");
 
 				String id = (String)session.getAttribute("nick");
 
+				
 				
 				if (dto == null) {
 				%>
@@ -51,13 +57,13 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="main.jsp" id="top-link"><span class="icon solid fa-home">메인</span></a></li>
-					<li><a href="update.html" id="portfolio-link"><span class="icon solid fa-th">회원수정</span></a></li>
+					<li><a href="update.jsp" id="portfolio-link"><span class="icon solid fa-th">회원수정</span></a></li>
 					<li><a href="delete.html" id="about-link"><span class="icon solid fa-user">회원삭제</span></a></li>
 					<% if (dto == null) {%>
 					<li><a href="Login.jsp" id="about-link"><span class="icon solid fa-user">로그인</span></a></li>
 					<li><a href="join.jsp" id="about-link"><span class="icon solid fa-user">Join</span></a></li>
 					<%}  else {%>
-					<li><a href="LogoutCon" id="about-link"><span class="icon solid fa-user">로그아웃</span></a></li>
+					<li><a href="Logout" id="about-link"><span class="icon solid fa-user">로그아웃</span></a></li>
 					<%
  					}%>
 				</ul>

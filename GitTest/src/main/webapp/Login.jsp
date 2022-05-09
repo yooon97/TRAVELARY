@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="LoginCon" method="post">
+<form action="Login" method="post">
 <table>
    <tr>
       <td>ID : </td>

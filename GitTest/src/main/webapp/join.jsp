@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="JoinCon" method="post">
+<form action="Join" method="post">
 <table>
    <tr>
       <td>ID : </td>

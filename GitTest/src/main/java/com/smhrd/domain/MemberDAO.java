@@ -1,11 +1,10 @@
-package model;
+package com.smhrd.domain;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.example.MemberDTO;
 import com.smhrd.database.SqlSessionManager;
 
 public class MemberDAO {
@@ -16,7 +15,7 @@ public class MemberDAO {
 	SqlSession sqlSession = sqlSessionFactory.openSession();
 	
 	// 회원가입 기능
-	public int insertMember(MemberDTO member) {
+	public int insertMember(Member member) {
 		int cnt = 0;
 		try {
 			cnt = sqlSession.insert("com.smhrd.domain.MemberDAO.insertMember" , member);
@@ -35,8 +34,8 @@ public class MemberDAO {
 	
 	// 로그인 기능
 	
-	public MemberDTO selectMember(MemberDTO member) {
-		MemberDTO loginMember = null;
+	public Member selectMember(Member member) {
+		Member loginMember = null;
 		try {
 			
 			loginMember = sqlSession.selectOne("com.smhrd.domain.MemberDAO.selectMember", member);
@@ -55,7 +54,7 @@ public class MemberDAO {
 	}
 	
 	// 수정 기능
-	public int updateMember(MemberDTO m_vo) {
+	public int updateMember(Member m_vo) {
 		int cnt = 0;
 		try {
 			cnt = sqlSession.update("com.smhrd.domain.MemberDAO.updateMember", m_vo);
@@ -84,9 +83,9 @@ public class MemberDAO {
 	// (mapper(resultType -> List 안에 들어가는 객체의 타입(클래스 경로))
 	
 	// 전체회원정보 불러오는 기능
-	public List<MemberDTO> selectAll() {
+	public List<Member> selectAll() {
 		
-		List<MemberDTO> memberList = null ;
+		List<Member> memberList = null ;
 		
 		try {
 		memberList = sqlSession.selectList("com.smhrd.domain.MemberDAO.selectAll");
@@ -109,10 +108,10 @@ public class MemberDAO {
 	
 	
 	// 회원삭제하는 기능
-	public int deleteMember(String id) {
+	public int deleteMember(String email) {
 		int cnt = 0;
 		try {
-			cnt = sqlSession.delete("com.smhrd.domain.MemberDAO.deleteMember", id);
+			cnt = sqlSession.delete("com.smhrd.domain.MemberDAO.deleteMember", email);
 			
 			if(cnt>0) {
 				sqlSession.commit();
